@@ -1,0 +1,29 @@
+<VirtualHost *:80>
+	ServerName $name
+        ServerAlias $name
+        ServerAdmin webmaster@localhost
+
+	DocumentRoot $loc/$name
+
+	<Directory />
+		Options FollowSymLinks
+		AllowOverride None
+	</Directory>
+	<Directory $loc/$name/>
+		Options Indexes FollowSymLinks MultiViews
+		AllowOverride None
+		Order allow,deny
+		allow from all
+	</Directory>
+
+	
+
+	ErrorLog /var/log/apache2/$name.error.log
+
+	# Possible values include: debug, info, notice, warn, error, crit,
+	# alert, emerg.
+	LogLevel warn
+
+	CustomLog /var/log/apache2/$name.access.log combined
+
+</VirtualHost>
